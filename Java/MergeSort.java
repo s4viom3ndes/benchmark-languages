@@ -43,6 +43,9 @@ public class MergeSort {
         Scanner scanner = new Scanner(file);
         List<Integer> numbers = new ArrayList<>();
         while (scanner.hasNext()) {
+            if (numbers.size() == MAX_SIZE) {
+                break;
+            }
             numbers.add(scanner.nextInt());
         }
         scanner.close();
