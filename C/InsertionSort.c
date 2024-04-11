@@ -9,23 +9,23 @@
 
 int main() {
     FILE *arquivo;
-    int* vetor = malloc(MAX * sizeof(int));
-    int tamanho = 0;
+    int* array = malloc(MAX * sizeof(int));
+    int arraySize = 0;
     clock_t executionTime;
-    if (vetor == NULL) {
+    if (array == NULL) {
         perror("Erro ao alocar memoria");
         return 0;
     }
 
-    arquivo = fopen("../../Dataset/dados_semi_ordenados.txt", "r");
+    arquivo = fopen("../../Dataset/dataset_95_sorted.txt", "r");
     if (arquivo == NULL) {
         perror("Erro ao abrir o arquivo");
         return 0;
     }
 
-    while (!feof(arquivo) && tamanho < MAX) {
-        fscanf(arquivo, "%d", &vetor[tamanho]);
-        tamanho++;
+    while (!feof(arquivo) && arraySize < MAX) {
+        fscanf(arquivo, "%d", &array[arraySize]);
+        arraySize++;
     }
 
     fclose(arquivo);
@@ -47,6 +47,6 @@ int main() {
     executionTime = clock() - executionTime;
     printf("Tempo de execucao: %lf ms\n", ((double)executionTime) / ((CLOCKS_PER_SEC / 1000)));
     
-    free(vetor);
+    free(array);
     return 0;
 }
